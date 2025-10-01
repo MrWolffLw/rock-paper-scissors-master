@@ -1,0 +1,294 @@
+:root {
+/* neutral */
+    --Dark-Text: hsl(229, 25%, 31%);
+    --Score-Text: hsl(229, 64%, 46%);
+    --Header-Outline: hsl(217, 16%, 45%);
+
+/* primary */
+
+--Scissors-Gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%);
+--Paper-Gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%);
+--Rock-Gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%);
+--Lizard-Gradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%);
+--Spock-Gradient: hsl(189, 59%, 53%) to hsl(189, 58%, 57%);
+
+/* background */
+
+--Radial-Gradient: hsl(214, 47%, 23%) to hsl(237, 49%, 15%);
+
+/* font */
+
+@font-face {
+    font-family: Barlow Semi Condensed ;
+    src: url(https://fonts.google.com/specimen/Barlow+Semi+Condensed);
+}
+
+}
+/* .barlow-semi-condensed-thin {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+} */
+*{
+    font-family: "Barlow Semi Condensed", sans-serif;
+    margin: 0;
+    padding: 0;
+    
+}
+body {
+    background:radial-gradient(circle at center, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+.scoreAffichage {
+    display: flex;
+    justify-self: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    width: 50%;
+    justify-content: space-between;
+}
+.number-cunter {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: center;
+    
+}
+.squareWhite{
+    background-color: white;
+    margin-top: 2%;
+    height: 100px;
+    width: 150px;
+    margin-right: 15px;
+    border-radius: 10px;
+}
+.scoreTxt{
+   display: flex;
+   justify-content: center;
+   font-size: 25px;
+   border-style: solid black;
+   color: var(--Dark-Text);
+}
+.logo {
+    margin: 0;
+    padding: 10px;
+}
+.pentagone {
+    display: flex;
+    justify-content: center;
+    padding-top: 150px;
+    position: relative;
+}
+
+.rock {
+    position: absolute;
+    top: 75%;
+    left: 61%;
+    
+}
+.paper {
+    position: absolute;
+    top: 48%;
+    left: 65%;
+}
+.scissors {
+    position: absolute;
+    top: 33%;
+    left: 55%;
+}
+.lizard {
+    position: absolute;
+     top: 75%;
+    left: 48%;
+}
+.spock {
+    position: absolute;
+    top: 48%;
+    left: 44%;
+    
+}
+.bg-spock {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    position: absolute;
+    /* top: -30%; */
+    right: 1%;
+    border-radius: 50%;
+    border: 15px solid hsl(189, 59%, 53%);
+    transition: 0.5s;
+}
+.bg-spock:hover {
+    transform: scale(110%);
+}
+.bg-paper {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    position: absolute;
+    top: -30%;
+    right: 5%;
+    border-radius: 50%;
+    border: 15px solid hsl(230, 89%, 62%);
+    transition: 0.5s;
+}
+.bg-paper:hover {
+    transform: scale(110%);
+}
+.bg-lizard {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    position: absolute;
+    top: -30%;
+    right: 5%;
+    border-radius: 50%;
+    border: 15px solid hsl(261, 73%, 60%);
+    transition: 0.5s;
+}
+.bg-lizard:hover {
+    transform: scale(110%);
+}
+.bg-rock {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    position: absolute;
+    top: -30%;
+    right: 5%;
+    border-radius: 50%;
+    border: 15px solid hsl(349, 71%, 52%);
+    transition: 0.5s;
+}
+.bg-rock:hover {
+    transform: scale(110%);
+}
+.bg-scissors {
+    width: 120px;
+    height: 120px;
+    background-color: white;
+    position: absolute;
+    top: -30%;
+    right: 5%;
+    border-radius: 50%;
+    border: 15px solid hsl(39, 89%, 49%);
+    transition: 0.5s;
+}
+.bg-scissors:hover {
+    transform: scale(110%);
+}
+.img-paper {
+    position: absolute;
+    left: 22%;
+    top: 15%;
+}
+.img-spock {
+    position: absolute;
+    left: 30%;
+    top: 15%;
+}
+.img-rock {
+    position: absolute;
+    left: 22%;
+    top: 25%;
+}
+.img-lizard {
+    position: absolute;
+    left: 15%;
+    top: 17%;
+}
+.img-scissors {
+    position: absolute;
+    left: 22%;
+    top: 15%;
+}
+.bg-footer {
+    display: flex;
+    background-color: blueviolet;
+    height: 150px;
+}
+
+footer{
+    margin-top: 150px;
+    height: 150px;
+    background-color: hsl(217, 16%, 45%);
+}
+
+.regles {
+    display: flex;
+    justify-self: end;
+    height: 50px;
+    width: 150px;
+    font-size: 25px;
+    justify-content: center;
+    border-radius: 10px;
+    background: none;
+    border: 1px solid white;
+    margin-right: 50px;
+    color: white;
+    font-family: "Barlow Semi Condensed", sans-serif;
+    align-items: center;
+}
+.restart {
+    display: none;
+    justify-self: end;
+    height: 50px;
+    width: 150px;
+    font-size: 25px;
+    justify-content: center;
+    border-radius: 10px;
+    background: none;
+    border: 1px solid white;
+    margin-right: 50px;
+    color: white;
+    font-family: "Barlow Semi Condensed", sans-serif;
+    align-items: center;
+}
+.cercleGD {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+
+}
+.youPicked {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 140px;
+    font-size: 25px;
+    color: white;
+}
+
+.cercle-gauche {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    border: 30px solid hsl(39, 89%, 49%);
+    width: 250px;
+    height: 250px;
+}
+.cercle-droit {
+     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 50%;
+    border: 30px solid hsl(230, 89%, 62%);
+    width: 250px;
+    height: 250px;
+    justify-content: center;
+}
+.regles-img {
+    display: flex;
+    justify-self: center;
+}
+.resultats {
+    display: none;
+}
+.gagner {
+    position: relative;
+    top: 250px;
+    display: none;
+    justify-self: center;
+    color: white;
+}

@@ -24,7 +24,12 @@
     <div class="scoreAffichage">
       <img src="/images/logo-bonus.svg" alt="" class="logo">
       <div class="squareWhite">
-        <span class="scoreTxt">SCORE<div id="numberCunter"></div></span>
+        <span class="scoreTxt">SCORE</span>
+        <!-- <h2 id="numberCunter">0</h2> -->
+         <div id="numberCunter" class="number-cunter">
+          <div>JOUEUR <span id="joueur-score"> 0 </span></div>
+          <div>ORDINATEUR <span id="ordinateur-score"> 0 </span></div>
+        </div>
       </div>
     </div>
   </header>
@@ -69,10 +74,10 @@
 
     </div>
 
- <div id="gagner" class="gagner">
-      <h2>VOUS AVEZ GAGNE !!! </h2>
+    <div id="gagner" class="gagner">
+      <h2 class="phrase-gagner">VOUS AVEZ GAGNE !!! </h2>
     </div>
-    
+
 
     <div class="resultats" id="resultats">
       <div class="youPicked">
@@ -91,7 +96,7 @@
       </div>
     </div>
 
-   
+
     <button class="restart">RESTART</button>
     <button class="regles" id="regle" type="button" class="btn btn-primary" data-bs-toggle="modal"
       data-bs-target="#exampleModal">RULES</button>
@@ -134,14 +139,17 @@
     const gagner = document.querySelector('#gagner')
     const perdu = document.querySelector('#perdu')
     const egal = document.querySelector('#egal')
-    const h2 = document.querySelector('h2')
+    const h2 = document.querySelector('.phrase-gagner')
 
     const imgScissors = document.querySelector('#scissors')
 
     const restart = document.querySelector('.restart')
     const lancer = document.querySelector('#lancer')
-    
-   
+    const regle = document.querySelector('#regle')
+    const scorePlayer = document.querySelector('#joueur-score')
+    const scoreOrdinateur = document.querySelector('#ordinateur-score')
+
+
 
     const canBeat = {
       rock: ["lizard", "scissors"],
@@ -153,9 +161,11 @@
 
     const tab = ["rock", "paper", "scissors", "lizard", "spock"];
 
-
+    let playerScore = 0;
+    let computerScore = 0;
+    
     btnSigne.addEventListener('click', function (e) {
-     h2.textContent = ''
+      h2.textContent = ''
       const id = e.target.id
 
       if (tab.includes(id)) {
@@ -166,6 +176,7 @@
         resultats.style.display = "block"
         restart.style.display = 'block'
         gagner.style.display = 'block'
+        regle.style.display = 'none'
 
         if (id === bot) {
           gagner.style.color = 'orange'
@@ -173,20 +184,30 @@
         } else if (canBeat[id].includes(bot)) {
           h2.textContent = 'VOUS AVEZ GAGNER !!!'
           gagner.style.color = 'green'
+          playerScore++;
+          scorePlayer.textContent = playerScore
         } else {
-         h2.textContent = 'VOUS AVEZ PERDU !'
+          h2.textContent = 'VOUS AVEZ PERDU !'
           gagner.style.color = 'red'
+          computerScore++;
+          scoreOrdinateur.textContent = computerScore
         }
         cercleGauche.setAttribute('src', '/images/icon-' + id + ".svg")
       }
+      
+      
     })
-restart.addEventListener('click', function() {
-  
-  resultats.style.display = 'none'
-  lancer.style.display = 'block'
-  
-  
-})
+
+    
+    restart.addEventListener('click', function () {
+
+      if (resultats.style.display = 'none') {
+        lancer.style.display = 'block'
+        gagner.style.display = 'none'
+        restart.style.display = 'none'
+        regle.style.display = 'block'
+      }
+    })
 
 
 

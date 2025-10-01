@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="index.css">
+
+  <title>Rock, Paper, Scissors, Lizard, Spock</title>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+
+<body>
+  <style>
+
+  </style>
+  <header>
+
+    <div class="scoreAffichage">
+      <img src="/images/logo-bonus.svg" alt="" class="logo">
+      <div class="squareWhite">
+        <span class="scoreTxt">SCORE</span>
+        <!-- <h2 id="numberCunter">0</h2> -->
+         <div id="numberCunter" class="number-cunter">
+          <div>JOUEUR <span id="joueur-score"> 0 </span></div>
+          <div>ORDINATEUR <span id="ordinateur-score"> 0 </span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div id="lancer">
+
+      <div class="pentagone">
+        <img src="/images/bg-pentagon.svg">
+      </div>
+
+      <div class="spock" id="btnSpock">
+        <div class="bg-spock">
+          <img src="/images/icon-spock.svg" class="img-spock" id="spock">
+        </div>
+      </div>
+
+      <div class="rock" id="btnRock">
+        <div class="bg-rock">
+          <img src="/images/icon-rock.svg" class="img-rock" id="rock">
+        </div>
+      </div>
+
+      <div class="paper" id="btnPaper">
+        <div class="bg-paper">
+          <img src="/images/icon-paper.svg" class="img-paper" id="paper">
+        </div>
+      </div>
+
+      <div class="lizard" id="btnLizard">
+        <div class="bg-lizard">
+          <img src="/images/icon-lizard.svg" class="img-lizard" id="lizard">
+        </div>
+      </div>
+
+      <div class="scissors" id="btnScissors">
+        <div class="bg-scissors">
+          <img src="/images/icon-scissors.svg" class="img-scissors" id="scissors">
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+        </div>
+      </div>
+
+    </div>
+
+    <div id="gagner" class="gagner">
+      <h2 class="phrase-gagner">VOUS AVEZ GAGNE !!! </h2>
+    </div>
+
+
+    <div class="resultats" id="resultats">
+      <div class="youPicked">
+        <span>You Picked</span>
+        <span class="housePicked">The House Picked</span>
+      </div>
+
+      <div class="cercleGD">
+        <div class="cercle-gauche" id="cercle-gauche">
+          <img src="" alt="">
+        </div>
+
+        <div class="cercle-droit" id="cercle-droit">
+          <img src="" alt="">
+        </div>
+      </div>
+    </div>
+
+
+    <button class="restart">RESTART</button>
+    <button class="regles" id="regle" type="button" class="btn btn-primary" data-bs-toggle="modal"
+      data-bs-target="#exampleModal">RULES</button>
+
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 " id="exampleModalLabel">RULES</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <img src="/images/image-rules-bonus.svg" class="regles-img">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+
+  <script>
+    const scissors = document.querySelector('#btnScissors')
+    const spock = document.querySelector('#btnSpock')
+    const paper = document.querySelector('#btnPaper')
+    const lizard = document.querySelector('#btnLizard')
+    const rock = document.querySelector('#btnRock')
+    const btnSigne = document.querySelector('#lancer')
+    const resultats = document.querySelector('#resultats')
+
+    const cercleDroit = document.querySelector('#cercle-droit img')
+    const cercleGauche = document.querySelector('#cercle-gauche img')
+    const gagner = document.querySelector('#gagner')
+    const perdu = document.querySelector('#perdu')
+    const egal = document.querySelector('#egal')
+    const h2 = document.querySelector('.phrase-gagner')
+
+    const imgScissors = document.querySelector('#scissors')
+
+    const restart = document.querySelector('.restart')
+    const lancer = document.querySelector('#lancer')
+    const regle = document.querySelector('#regle')
+    const scorePlayer = document.querySelector('#joueur-score')
+    const scoreOrdinateur = document.querySelector('#ordinateur-score')
+
+
+
+    const canBeat = {
+      rock: ["lizard", "scissors"],
+      paper: ["rock", "spock"],
+      scissors: ["paper", "lizard"],
+      lizard: ["spock", "paper"],
+      spock: ["scissors", "rock"]
+    };
+
+    const tab = ["rock", "paper", "scissors", "lizard", "spock"];
+
+    let playerScore = 0;
+    let computerScore = 0;
+    
+    btnSigne.addEventListener('click', function (e) {
+      h2.textContent = ''
+      const id = e.target.id
+
+      if (tab.includes(id)) {
+        const nbAlea = Math.floor(Math.random() * tab.length)
+        const bot = tab[nbAlea]
+        cercleDroit.setAttribute('src', '/images/icon-' + bot + ".svg")
+        btnSigne.style.display = "none"
+        resultats.style.display = "block"
+        restart.style.display = 'block'
+        gagner.style.display = 'block'
+        regle.style.display = 'none'
+
+        if (id === bot) {
+          gagner.style.color = 'orange'
+          h2.textContent = 'EGALITE !'
+        } else if (canBeat[id].includes(bot)) {
+          h2.textContent = 'VOUS AVEZ GAGNER !!!'
+          gagner.style.color = 'green'
+          playerScore++;
+          scorePlayer.textContent = playerScore
+        } else {
+          h2.textContent = 'VOUS AVEZ PERDU !'
+          gagner.style.color = 'red'
+          computerScore++;
+          scoreOrdinateur.textContent = computerScore
+        }
+        cercleGauche.setAttribute('src', '/images/icon-' + id + ".svg")
+      }
+      
+      
+    })
+
+    
+    restart.addEventListener('click', function () {
+
+      if (resultats.style.display = 'none') {
+        lancer.style.display = 'block'
+        gagner.style.display = 'none'
+        restart.style.display = 'none'
+        regle.style.display = 'block'
+      }
+    })
+
+
+
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

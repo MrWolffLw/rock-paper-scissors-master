@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Page d'erreur{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        :root {
+            --background-main: #efefef;
+            --text-color: #0e3247;
+            --special-color: #00a1d3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: white;
+        }
+
+        @font-face {
+            font-family: "baseline";
+            src: url("/static/fonts/PPFormula-SemiCondensedMedium.otf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "titres";
+            src: url("/static/fonts/ITC-Avant-Garde-Gothic-Medium.otf") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: "corps de texte";
+            src: url("/static/fonts/ITC-Avant-Garde-Gothic-CE-Book.otff") format("truetype");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            background-color: var(--background-main);
+            color: var(--text-color);
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 1rem;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        header img {
+            max-height: 60px;
+        }
+
+        main {
+            flex: 1;
+            padding: 3rem 1rem;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            background-color: var(--text-color);
+        }
+
+        .logo-footer {
+            width: 200px;
+        }
+
+        .logo {
+            display: flex;
+
+        }
+
+        .logo-ouitec {
+            width: 150px;
+            height: 190px;
+        }
+
+        .error-404 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 100px;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 100px;
+            font-family: "titres", sans-serif;
+            margin-top: 150px;
+        }
+
+        h2 {
+            font-size: 30px;
+            font-family: "baseline", sans-serif;
+        }
+
+        .logo {
+            position: absolute;
+        }
+
+        .pico-bg {
+            display: flex;
+            z-index: 1000;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--background-main);
+            width: 150px;
+            height: 150px;
+            border: var(--text-color);
+            border-radius: 20px;
+            box-shadow: 3px 3px 8px var(--text-color);
+        }
+
+        img {
+            background: none;
+        }
+
+        p {
+            background: none;
+        }
+
+        .para-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .para-var {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--background-main);
+            width: 200px;
+            height: 30px;
+            margin-top: 15px;
+            box-shadow: 3px 3px 8px var(--text-color);
+            border-radius: 5px;
+        }
+
+        .couronne {
+            position: absolute;
+            right: 0%;
+            
+        }
+        .img-couronne {
+            position: relative;
+            z-index: 0;
+            background: none;
+            width: 400px;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    
+    <div class="logo">
+        <img src="{{ url_for('static', filename='images/ouitec_logo_fr.png') }}" alt="Logo OUiTEC" class="logo-ouitec">
+        
+    </div>
+    
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    <div class="couronne">
+        <img src="{{ url_for('static', filename='images/couronneouitec.png') }}" class="img-couronne">
+    </div>
+
+    <footer>
+        <img src="{{ url_for('static', filename='images/ouitec_clair_tel.png') }}" alt="Logo Footer"
+            class="logo-footer">
+    </footer>
+
+</body>
+
+</html>

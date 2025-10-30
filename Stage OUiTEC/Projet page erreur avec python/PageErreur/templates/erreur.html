@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}
+Erreur {{ erreur.code if erreur else 500 }}
+{% endblock %}
+
+{% block content %}
+{% set code = erreur.code if erreur else 500 %}
+{% set message = erreur.message if erreur else "Erreur inconnue." %}
+
+<div class="error-box">
+    <h1>{{ code }}</h1>
+    <h2>{{ message }}</h2>
+
+
+    <!-- Image spécifique à l'erreur -->
+    {%if code == 404 %}
+    <div class="error-404">
+        <div class="para-box">
+            <div class="para-var">
+                <p>{{ code }}</p>
+            </div>
+            <div class="para-var">
+                <p>{{ code }}</p>
+            </div>
+            <div class="para-var">
+                <p>{{ code }}</p>
+            </div>
+        </div>
+        <div class="pico-bg">
+            <p>Client</p>
+            <br>
+            <img src="{{ url_for('static', filename='images/clientinterdit.png') }}" alt="404 image 1"
+                width="80px">
+        </div>
+        <div class="pico-bg">
+            <p>OUiTEC WAF</p>
+            <br>
+            <img src="{{ url_for('static', filename='pictos_OUiTEC/PICTOS_OUITEC-06.svg') }}" alt="404 image 1"
+                width="70px">
+        </div>
+        <div class="pico-bg">
+            <p>Serveur Web</p>
+            <br>
+            <img src="{{ url_for('static', filename='pictos_OUiTEC/PICTOS_OUITEC-25.svg') }}" alt="404 image 1"
+                width="80px">
+        </div>
+
+
+    </div>
+
+    {% elif code == 400 %}
+    <div class="error-400">
+        <h2>{{ message }}</h2>
+        <img src="{{ url_for('static', filename='images/explications/500_1.png') }}" alt="500 image 1">
+        <img src="{{ url_for('static', filename='pictos_OUiTEC/PICTOS_OUITEC-06.svg') }}" alt="404 image 1">
+        <img src="{{ url_for('static', filename='images/explications/500_2.png') }}" alt="500 image 2">
+    </div>
+
+    {% elif code == 403 %}
+    <div class="error-403">
+        <h2>{{ message }}</h2>
+        <img src="{{ url_for('static', filename='images/explications/500_1.png') }}" alt="500 image 1">
+        <img src="{{ url_for('static', filename='pictos_OUiTEC/PICTOS_OUITEC-06.svg') }}" alt="404 image 1">
+        <img src="{{ url_for('static', filename='images/explications/500_2.png') }}" alt="500 image 2">
+    </div>
+
+    {% elif code == 401 %}
+    <div class="error-401">
+        <h2>{{ message }}</h2>
+        <img src="{{ url_for('static', filename='images/explications/500_1.png') }}" alt="500 image 1">
+        <img src="{{ url_for('static', filename='pictos_OUiTEC/PICTOS_OUITEC-06.svg') }}" alt="404 image 1">
+        <img src="{{ url_for('static', filename='images/explications/500_2.png') }}" alt="500 image 2">
+    </div>
+
+    {% elif code == 429 %}
+    <div class="error-429">
+        <h2>{{ message }}</h2>
+        <img src="{{ url_for('static', filename='images/explications/500_1.png') }}" alt="500 image 1">
+        <img src="{{ url_for('static', filename='pictos_OUiTEC/PICTOS_OUITEC-06.svg') }}" alt="404 image 1">
+        <img src="{{ url_for('static', filename='images/explications/500_2.png') }}" alt="500 image 2">
+    </div>
+
+    {% elif code == 500 %}
+    <div class="error-500">
+        <h2>{{ message }}</h2>
+        <img src="{{ url_for('static', filename='images/explications/500_1.png') }}" alt="500 image 1">
+        <img src="{{ url_for('static', filename='pictos_OUiTEC/PICTOS_OUITEC-06.svg') }}" alt="404 image 1">
+        <img src="{{ url_for('static', filename='images/explications/500_2.png') }}" alt="500 image 2">
+    </div>
+
+    {% elif code == 502 %}
+    <div class="error-502">
+        <h2>{{ message }}</h2>
+        <img src="{{ url_for('static', filename='images/explications/500_1.png') }}" alt="500 image 1">
+        <img src="{{ url_for('static', filename='pictos_OUiTEC/PICTOS_OUITEC-06.svg') }}" alt="404 image 1">
+        <img src="{{ url_for('static', filename='images/explications/500_2.png') }}" alt="500 image 2">
+    </div>
+
+    {% elif code == 503 %}
+    <div class="error-503">
+        <h2>{{ message }}</h2>
+        <img src="{{ url_for('static', filename='images/explications/500_1.png') }}" alt="500 image 1">
+        <img src="{{ url_for('static', filename='pictos_OUiTEC/PICTOS_OUITEC-06.svg') }}" alt="404 image 1">
+        <img src="{{ url_for('static', filename='images/explications/500_2.png') }}" alt="500 image 2">
+    </div>
+    {% endif %}
+</div>
+
+
+
+{% endblock %}
